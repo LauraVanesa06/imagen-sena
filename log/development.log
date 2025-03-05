@@ -18,3 +18,205 @@ Migrating to CreateLibros (20250219211249)
   [1m[36mLibro Destroy (2.0ms)[0m  [1m[31mDELETE FROM "libros" WHERE "libros"."id" = 1 /*application='MiApi'*/[0m
   [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
   [1m[36mLibro Load (3.1ms)[0m  [1m[34mSELECT "libros".* FROM "libros" /* loading for pp */ LIMIT 11 /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mLibro Create (56.5ms)[0m  [1m[32mINSERT INTO "libros" ("autor", "nombre", "precio", "cantidad", "created_at", "updated_at") VALUES ('Jane Austen', 'Persuacion', 20000, 20000, '2025-02-24 20:55:39.057980', '2025-02-24 20:55:39.057980') RETURNING "id" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (31.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+Started GET "/libros" for 172.17.0.1 at 2025-02-24 21:15:08 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+Processing by LibrosController#index as HTML
+  [1m[36mLibro Load (47.9ms)[0m  [1m[34mSELECT "libros".* FROM "libros" /*action='index',application='MiApi',controller='libros'*/[0m
+  ↳ app/controllers/libros_controller.rb:4:in `index'
+Completed 200 OK in 542ms (Views: 76.3ms | ActiveRecord: 54.9ms (1 query, 0 cached) | GC: 55.5ms)
+
+
+Started GET "/favicon.ico" for 172.17.0.1 at 2025-02-24 21:15:09 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/libros/1" for 172.17.0.1 at 2025-02-24 21:16:07 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for LibrosController):
+  
+actionpack (8.0.1) lib/abstract_controller/base.rb:158:in `process'
+actionpack (8.0.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.1) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.1) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.10) lib/rack/etag.rb:29:in `call'
+rack (3.1.10) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.10) lib/rack/head.rb:15:in `call'
+activerecord (8.0.1) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.1) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.10) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.1) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/libros/2" for 172.17.0.1 at 2025-02-24 21:16:11 +0000
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for LibrosController):
+  
+actionpack (8.0.1) lib/abstract_controller/base.rb:158:in `process'
+actionpack (8.0.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.1) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.1) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.10) lib/rack/etag.rb:29:in `call'
+rack (3.1.10) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.10) lib/rack/head.rb:15:in `call'
+activerecord (8.0.1) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.1) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.10) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.1) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/libros/2" for 172.17.0.1 at 2025-02-24 21:16:14 +0000
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for LibrosController):
+  
+actionpack (8.0.1) lib/abstract_controller/base.rb:158:in `process'
+actionpack (8.0.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.1) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.1) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.1) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.1) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.10) lib/rack/etag.rb:29:in `call'
+rack (3.1.10) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.10) lib/rack/head.rb:15:in `call'
+activerecord (8.0.1) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.1) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.1) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.1) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.1) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.10) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.1) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.1) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.1) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/libros" for 172.17.0.1 at 2025-02-24 21:17:12 +0000
+Processing by LibrosController#index as HTML
+  [1m[36mLibro Load (49.0ms)[0m  [1m[34mSELECT "libros".* FROM "libros" /*action='index',application='MiApi',controller='libros'*/[0m
+  ↳ app/controllers/libros_controller.rb:4:in `index'
+Completed 200 OK in 206ms (Views: 26.1ms | ActiveRecord: 55.0ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/libros/2" for 172.17.0.1 at 2025-02-24 22:00:15 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (5.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+Processing by LibrosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLibro Load (3.8ms)[0m  [1m[34mSELECT "libros".* FROM "libros" WHERE "libros"."id" = 2 LIMIT 1 /*action='show',application='MiApi',controller='libros'*/[0m
+  ↳ app/controllers/libros_controller.rb:7:in `show'
+Completed 200 OK in 320ms (Views: 1.0ms | ActiveRecord: 57.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (3.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+Migrating to CreatePeliculas (20250226202246)
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "peliculas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "cant" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250226202246') RETURNING "version" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (14.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+Migrating to CreateMovies (20250226203456)
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "movies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "cantidad" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250226203456') RETURNING "version" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+  [1m[36mMovie Load (7.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies" /* loading for pp */ LIMIT 11 /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mMovie Create (4.9ms)[0m  [1m[32mINSERT INTO "movies" ("nombre", "cantidad", "created_at", "updated_at") VALUES ('Amor de media noche', 2, '2025-02-26 20:38:59.690705', '2025-02-26 20:38:59.690705') RETURNING "id" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mMovie Load (6.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies" /* loading for pp */ LIMIT 11 /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+Migrating to CreateRestaurantes (20250226204204)
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "restaurantes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar, "platos" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250226204204') RETURNING "version" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (14.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
